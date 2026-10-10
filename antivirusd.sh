@@ -55,10 +55,10 @@ do
 
                     if [ "$malicious" -eq 1 ]
                     then
-                        echo "$filename is malicious and it is DELETED "
+                        echo "$filename is malicious and it is DELETED"
                         cp "$file" "$malicious_dir/"
                         rm "$file"
-                        fi                  
+                                         
                     fi
                 fi
             done

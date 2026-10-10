@@ -7,15 +7,15 @@ fi
 dir="$1"
 malicious_dir="$2"
 
-if [ ! -d "$malicious_dir" ] || [ $(ls -A "$malicious_dir" | wc -l)-eq 0 ]
+if [ ! -d "$malicious_dir" ] || [ $(ls -A "$malicious_dir" | wc -l) -eq 0 ]
 then 
-    echo "No maliciousfiles to review "
+    echo "No malicious files to review "
     exit 0
 fi
 while true 
 do 
     echo ""
-    echo "        Quarntine Files     "
+    echo "        Quarantine Files     "
     count=1
     set -- "$malicious_dir"/*
 
