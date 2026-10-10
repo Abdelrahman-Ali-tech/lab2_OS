@@ -25,7 +25,7 @@ do
             do
                 if [ -f "$file" ] 
                 then
-                    file=$(basename "$file") 
+                    filename=$(basename "$file") 
                     malicious=0
                     case "$filename" in
                     *.exe) 
@@ -37,7 +37,7 @@ do
                     *.vbs) 
                         malicious=1
                         ;;
-                    *.src) 
+                    *.scr) 
                         malicious=1
                         ;;
                     *.ps1) 
@@ -45,16 +45,17 @@ do
                     ;;  
                     esac
 
-                    if [ malicious -eq 0 ]
+                    if [ "$malicious" -eq 0 ]
                     then
-                        if grep -q -i -E "virus|torjan|malware|worm|ransomeware" "$file"
+                        if grep -q -i -E "virus|trojan|malware|worm|ransomware" "$file"
                             then
                             malicious=1
                         fi
-                        
-                    if [ malicious -eq 1 ]
+                    fi
+
+                    if [ "$malicious" -eq 1 ]
                     then
-                        echo "$filename is malicious and it is killed "
+                        echo "$filename is malicious and it is DELETED "
                         cp "$file" "$malicious_dir/"
                         rm "$file"
                         fi                  
