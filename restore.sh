@@ -4,18 +4,18 @@ then
     echo "wrong format -> dir malicious_dir "
     exit 1
 fi   
-dir = "$1"
-malicious_dir = "$2"
+dir="$1"
+malicious_dir="$2"
 
-if [ ! -d "$malicious_dir" ] || [ $(ls -A "$malicious_dir" wc -l)-eq 0 ]
+if [ ! -d "$malicious_dir" ] || [ $(ls -A "$malicious_dir" | wc -l)-eq 0 ]
 then 
     echo "No maliciousfiles to review "
     exit 0
-
+fi
 while true 
 do 
     echo ""
-    ehco "        Quarntine Files     "
+    echo "        Quarntine Files     "
     count=1
     set -- "$malicious_dir"/*
 
@@ -39,7 +39,7 @@ do
     fi
 
     eval selected_file=\${$choice}
-    fname=$(basename "$selected_file")"
+    fname=$(basename "$selected_file")
     
     echo " option for [$fname]:"
     echo "1.restore file "  
